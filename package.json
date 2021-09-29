@@ -1,0 +1,16 @@
+{
+  "name": "clover-diff",
+  "version": "1.0.0",
+  "description": "A tool to catch the differences between two clover files",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pierre Rolland <pierre.rolland@openclassrooms.com>",
+  "license": "ISC",
+  "dependencies": {
+    "xml-js": "^1.6.11",
+    "yargs": "^17.2.1"
+  }
+}
