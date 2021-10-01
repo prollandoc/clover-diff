@@ -30,3 +30,26 @@ node index.js source_coverage.xml destination_coverage.xml --type=packages
 ```
 node index.js source_coverage.xml destination_coverage.xml --type=files
 ```
+
+#### With JSON details files
+```
+node index.js source_details.json destination_details.json --parse=no-parse
+```
+
+## Detail a coverage file into a JSON file
+
+This only works for `files` type now, meaning it will detail your coverage file into a JSON 
+file containing the coverages for all your files. Can be great to debug files that have been 
+produced by the `OpenClassrooms/coverage-checker` Github action.
+
+```
+node detail.js coverage.xml
+```
+
+The output file will be stored under `./out.json`
+
+Then you can replace the JSON object's properties names using the following command:
+
+```
+node replace-object-keys.js ./out.json '/home/Users/MyDir' 'MyProject'
+```

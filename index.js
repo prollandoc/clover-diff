@@ -1,3 +1,4 @@
+const fs = require('fs');
 const process = require('process');
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
@@ -11,7 +12,9 @@ if (argv._.length !== 2) {
 }
 
 const type = argv.type || 'overall';
-const baseCoverage = parseCoverage(argv._[0], type);
-const newCoverage = parseCoverage(argv._[1], type);
+const parse = (argv.parse || 'parse') === 'parse';
+
+const baseCoverage = parse ? parseCoverage(argv._[0], type) : JSON.parse(fs.readFileSync(argv._[0]));
+const newCoverage = parse ? parseCoverage(argv._[1], type) : JSON.parse(fs.readFileSync(argv._[1]));
 
 console.log(compareDetailedCoverages(baseCoverage, newCoverage));
